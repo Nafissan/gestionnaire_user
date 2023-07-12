@@ -35,11 +35,9 @@ def ajouter_utilisateur():
     data = request.get_json()
     username = data['username']
     password = data['password']
-    mail = data['email']
-
     # Ajout de l'utilisateur dans la base de données
     cursor = db.cursor()
-    cursor.execute("INSERT INTO utilisateur (login, password, email) VALUES (%s, %s, %s)", (username, password, mail))
+    cursor.execute("INSERT INTO utilisateur (login, password) VALUES (%s, %s)", (username, password))
     db.commit()
     cursor.close()
 
@@ -50,10 +48,11 @@ def ajouter_utilisateur():
 def modifier_utilisateur(user_id):
     data = request.get_json()
     new_password = data['password']
+    new_username = data['username']
 
     # Modification du mot de passe de l'utilisateur dans la base de données
     cursor = db.cursor()
-    cursor.execute("UPDATE utilisateur SET password = %s WHERE id = %s", (new_password, user_id))
+    cursor.execute("UPDATE utilisateur SET login= %s ,password = %s WHERE id = %s", (new_username,new_password, user_id))
     db.commit()
     cursor.close()
 
