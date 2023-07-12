@@ -41,8 +41,7 @@ def test_ajouter_utilisateur():
     url = base_url + '/utilisateurs'
     data = {
         'username': 'alice',
-        'password': 'password456',
-        'email' : 'jjdjf@kskkd'
+        'password': 'password456'
     }
     response = post_request(url, data)
     print(response['message'])
@@ -51,6 +50,7 @@ def test_ajouter_utilisateur():
 def test_modifier_utilisateur(user_id):
     url = base_url + '/utilisateurs/' + str(user_id)
     data = {
+        'username' : 'alice',
         'password': 'newpassword789'
     }
     response = put_request(url, data)
