@@ -30,8 +30,8 @@ def get_request(url):
 def test_authentification():
     url = base_url + '/authentification'
     data = {
-        'username': 'john',
-        'password': 'password123'
+        'username': 'admin',
+        'password': 'passer'
     }
     response = post_request(url, data)
     print(response['message'])
